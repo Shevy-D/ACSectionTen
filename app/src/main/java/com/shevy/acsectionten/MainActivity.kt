@@ -8,6 +8,7 @@ import com.shevy.acsectionten.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
+    //Delete it
     lateinit var recyclerView: RecyclerView
     lateinit var adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>
     lateinit var layoutManager: RecyclerView.LayoutManager
@@ -17,27 +18,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+/*
         val recyclerViewItems: ArrayList<RecyclerViewItem> = ArrayList()
         recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Happy", "Life is fun!"))
         recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Sad", "Life is sad!"))
         recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Neutral", "Life is life!"))
-        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Happy", "Life is fun!"))
-        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Sad", "Life is sad!"))
-        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Neutral", "Life is life!"))
-        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Happy", "Life is fun!"))
-        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Sad", "Life is sad!"))
-        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Neutral", "Life is life!"))
-        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Happy", "Life is fun!"))
-        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Sad", "Life is sad!"))
-        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Neutral", "Life is life!"))
-        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Happy", "Life is fun!"))
-        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Sad", "Life is sad!"))
-        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Neutral", "Life is life!"))
+*/
 
-        binding.recyclerView.apply {
+/*        binding.recyclerView.apply {
             setHasFixedSize(true)
             adapter = RecyclerViewAdapter(recyclerViewItems)
             layoutManager = LinearLayoutManager(context)
-        }
+        }*/
     }
 }
