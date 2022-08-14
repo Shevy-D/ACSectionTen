@@ -1,44 +1,43 @@
 package com.shevy.acsectionten
 
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.shevy.acsectionten.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
+    lateinit var recyclerView: RecyclerView
+    lateinit var adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>
+    lateinit var layoutManager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val listView = binding.listView
+        val recyclerViewItems: ArrayList<RecyclerViewItem> = ArrayList()
+        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Happy", "Life is fun!"))
+        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Sad", "Life is sad!"))
+        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Neutral", "Life is life!"))
+        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Happy", "Life is fun!"))
+        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Sad", "Life is sad!"))
+        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Neutral", "Life is life!"))
+        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Happy", "Life is fun!"))
+        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Sad", "Life is sad!"))
+        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Neutral", "Life is life!"))
+        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Happy", "Life is fun!"))
+        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Sad", "Life is sad!"))
+        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Neutral", "Life is life!"))
+        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Happy", "Life is fun!"))
+        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Sad", "Life is sad!"))
+        recyclerViewItems.add(RecyclerViewItem(R.drawable.ic_launcher_background, "Neutral", "Life is life!"))
 
-        val post: ArrayList<String> = ArrayList()
-        for (i in 1..20) {
-            post.add("Post $i")
-            //Log.d("posts", "$i")
-        }
-
-        val colors: ArrayList<String> = arrayListOf("Red", "Orange", "Yellow", "Green", "Blue", "Blue", "Violet")
-
-        val arrayAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, colors)
-
-        listView.adapter = arrayAdapter
-        listView.setOnItemClickListener { adapterView, view, i, l ->
-            //view.visibility = View.GONE
-            val color = when (i) {
-                0 -> "Красный"
-                1 -> "Оранжевый"
-                2 -> "Желтый"
-                3 -> "Зеленый"
-                4 -> "Голубой"
-                5 -> "Синий"
-                else -> "Фиолетовый"
-            }
-            Toast.makeText(this, color, Toast.LENGTH_SHORT).show()
+        binding.recyclerView.apply {
+            setHasFixedSize(true)
+            adapter = RecyclerViewAdapter(recyclerViewItems)
+            layoutManager = LinearLayoutManager(context)
         }
     }
 }
