@@ -1,21 +1,38 @@
 package com.shevy.acsectionten
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.shevy.acsectionten.databinding.PizzaRecipeItemBinding
 
-class PizzaRecipeAdapter(private val arrayList: ArrayList<PizzaRecipeItem>): RecyclerView.Adapter<PizzaRecipeAdapter.PizzaRecipeViewHolder>() {
+class PizzaRecipeAdapter(
+    private val pizzaRecipeItems: ArrayList<PizzaRecipeItem>, context: Context
+) : RecyclerView.Adapter<PizzaRecipeAdapter.PizzaRecipeViewHolder>() {
+    val context = context
 
-    //private val arrayList = ArrayList<RecyclerViewItem>()
-
-    class PizzaRecipeViewHolder(item: View) : RecyclerView.ViewHolder(item) {
+    inner class PizzaRecipeViewHolder(item: View) : RecyclerView.ViewHolder(item) {
         private val binding = PizzaRecipeItemBinding.bind(item)
 
         val imageView = binding.pizzaImageView
         val title = binding.titleTextView
         val description = binding.descriptioTextView
+
+        init {
+            item.setOnClickListener {
+                val pizzaRecipeItem = pizzaRecipeItems[adapterPosition]
+                val intent = Intent(context, RecipeActivity::class.java)
+                intent.apply {
+                    putExtra("imageResource", pizzaRecipeItem.imageResource)
+                    putExtra("title", pizzaRecipeItem.title)
+                    putExtra("description", pizzaRecipeItem.description)
+                    putExtra("recipe", pizzaRecipeItem.recipe)
+                }
+                context.startActivity(intent)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PizzaRecipeViewHolder {
@@ -25,12 +42,10 @@ class PizzaRecipeAdapter(private val arrayList: ArrayList<PizzaRecipeItem>): Rec
     }
 
     override fun onBindViewHolder(holder: PizzaRecipeViewHolder, position: Int) {
-        holder.imageView.setImageResource(arrayList[position].imageResource)
-        holder.title.text = arrayList[position].title
-        holder.description.text = arrayList[position].description
+        holder.imageView.setImageResource(pizzaRecipeItems[position].imageResource)
+        holder.title.text = pizzaRecipeItems[position].title
+        holder.description.text = pizzaRecipeItems[position].description
     }
 
-    override fun getItemCount(): Int {
-        return arrayList.size
-    }
+    override fun getItemCount(): Int = pizzaRecipeItems.size
 }
